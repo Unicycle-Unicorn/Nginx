@@ -31,6 +31,7 @@ jobs:
     - name: Push Docker Image
       run: docker push ghcr.io/${{ steps.lower-repo.outputs.repository }}:latest
   ssh_droplet_update:
+    needs: build_and_push_image
     name: SSH to Droplet and Update Docker
     runs-on: ubuntu-latest
     steps:
