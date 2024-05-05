@@ -30,3 +30,13 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Push Docker Image
       run: docker push ghcr.io/${{ steps.lower-repo.outputs.repository }}:latest
+  ssh_droplet_update:
+    name: SSH to Droplet and Update Docker
+    runs-on: ubuntu-latest
+    steps:
+      uses: appleboy/ssh-action@master
+      with:
+        host: api.unicycleunicorn.net
+        username: root
+        password: ${{ secrets.droplet_password }}
+        script: docker compose pull && docker compose up -d && exit
