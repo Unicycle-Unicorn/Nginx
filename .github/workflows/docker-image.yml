@@ -34,9 +34,9 @@ jobs:
     name: SSH to Droplet and Update Docker
     runs-on: ubuntu-latest
     steps:
-      uses: appleboy/ssh-action@master
-      with:
-        host: api.unicycleunicorn.net
-        username: root
-        password: ${{ secrets.droplet_password }}
-        script: docker compose pull && docker compose up -d && exit
+      - uses: appleboy/ssh-action@master
+        with:
+          host: api.unicycleunicorn.net
+          username: root
+          password: ${{ secrets.droplet_password }}
+          script: docker compose pull && docker compose up -d && exit
