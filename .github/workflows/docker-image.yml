@@ -11,12 +11,4 @@ jobs:
     uses: Unicycle-Unicorn/CICD/.github/workflows/docker-build-push.yml@main
   ssh_droplet_update:
     needs: build_and_push_image
-    name: SSH to Droplet and Update Docker
-    runs-on: ubuntu-latest
-    steps:
-      - uses: appleboy/ssh-action@master
-        with:
-          host: api.unicycleunicorn.net
-          username: root
-          password: ${{ secrets.droplet_password }}
-          script: docker compose pull && docker compose up -d && exit
+    uses: Unicycle-Unicorn/CICD/.github/workflows/droplet-ssh-pull-up.yml@main
