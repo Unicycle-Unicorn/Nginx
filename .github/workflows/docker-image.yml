@@ -14,5 +14,4 @@ jobs:
     uses: Unicycle-Unicorn/CICD/.github/workflows/droplet-ssh-pull-up.yml@main
     with:
       services: nginx
-      force: true
     secrets: inherit
