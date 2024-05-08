@@ -12,4 +12,6 @@ jobs:
   ssh_droplet_update:
     needs: build_and_push_image
     uses: Unicycle-Unicorn/CICD/.github/workflows/droplet-ssh-pull-up.yml@main
+    with:
+      services: nginx
     secrets: inherit
